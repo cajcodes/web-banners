@@ -18,7 +18,7 @@ To customize the Outage Banner for your specific use case:
 ## Weather Banner
 The Weather Banner is a dynamic web component that displays current weather information and an extended forecast. It utilizes the National Weather Service API to fetch weather data based on a specific location. You can see it implemented [here](https://www.phonoscopefiber.com/hurricane).
 
-![Screenshot of Weather Banner with menu expanded](/screenshots/screenshot-weather)
+![Screenshot of Weather Banner with menu expanded](/screenshots/screenshot-weather.png)
 
 ### How It Works
 The Weather Banner uses JavaScript to fetch initial point data from the API, which includes the forecast and grid data URLs. It then extracts the necessary parameters to fetch the short-term forecast and extended forecast data. The banner displays the current weather alert, high and low temperatures, and provides a clickable option to view the extended forecast.
@@ -32,7 +32,7 @@ To customize the Weather Banner:
 ## Simple Weather Banner
 The Simple Weather Banner is a basic version of the Weather Banner that displays a single weather alert. It is designed to be a lightweight and straightforward implementation.
 
-![Screenshot of simple Weather Banner](/screenshots/screenshot-weather-simple)
+![Screenshot of simple Weather Banner](/screenshots/screenshot-weather-simple.png)
 
 ### How It Works
 The Simple Weather Banner uses HTML, CSS, and JavaScript to fetch weather data from the National Weather Service API and populate the banner content. It displays a single alert about the current weather conditions.
