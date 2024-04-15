@@ -1,0 +1,95 @@
+<!-- Outage Alerts Widget -->
+<div style="font-family: 'Roboto', sans-serif;">
+  <!-- Outage Alert Banner -->
+  <div id="outageAlertBanner" style="background-color: #9933cc; color: #fff; text-align: center; padding: 10px; font-size: 18px; font-weight: bold; cursor: pointer;">
+    <!-- Outage alert status will be populated here -->
+  </div>
+
+  <!-- Hidden Sections -->
+  <div id="hiddenSections" style="display: none; max-width: 980px; margin: auto;">
+    <!-- Default Notice -->
+    <div id="defaultNotice" style="background-color: #e0f2f1; color: #333; text-align: center; padding: 10px; margin-top: 10px; font-weight: bold;">
+      <!-- Default notice will be populated here -->
+    </div>
+
+    <!-- Click to Expand for Recent Alerts -->
+    <div id="clickToExpand" style="text-align: center; padding: 10px; font-weight: bold; cursor: pointer;">
+      Click to Expand for Recent Alerts
+    </div>
+
+    <!-- Expanded Outage Info -->
+    <div id="expandedOutageInfo" style="display: none; background-color: #f5f5f5; color: #333; text-align: center; padding: 10px; overflow-y: scroll; max-height: 200px;">
+      <div id="updatesDiv"></div>
+    </div>
+    
+    <!-- Footer Links -->
+    <div style="text-align: center; padding: 10px;">
+      <a href="https://www.phonoscopefiber.com/outage" style="color: #ffffff; font-weight: bold; text-decoration: underline; background-color: #333; padding: 5px; border-radius: 5px; border: 1px solid #9933cc;">Report an Outage</a> |
+      <a href="https://www.phonoscopefiber.com/dark-fiber-outage" style="color: #ffffff; font-weight: bold; text-decoration: underline; background-color: #333; padding: 5px; border-radius: 5px; border: 1px solid #9933cc;">Report a Dark Fiber Outage</a> |
+      <a href="https://www.phonoscopefiber.com/ai-support" style="color: #ffffff; font-weight: bold; text-decoration: underline; background-color: #333; padding: 5px; border-radius: 5px; border: 1px solid #9933cc;">AI Support Center</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize your local data here
+  const outageStatus = "All Systems Operational - Click for Updates";
+  const defaultNotice = {
+    Timestamp: "09/27/2023 11:00 AM",
+    Notice: "All systems are currently operational. We continue to monitor for any irregularities."
+  };
+  const updates = [
+    {
+      Timestamp: "09/27/23 8:06 AM",
+      Notice: "We're pleased to report that the node outage in the Humble area has been resolved and all systems are now operational. Thank you for your patience and understanding during this disruption."
+    },
+    {
+      Timestamp: "09/27/23 7:21 AM",
+      Notice: "We're currently experiencing a node outage in the Humble area due to widespread power disruptions. Our team is monitoring the situation closely and will provide updates as more information becomes available."
+    }
+  ];
+
+  // Populate the banner
+  const banner = document.getElementById("outageAlertBanner");
+  banner.innerHTML = `<span style="font-size: 18px; font-weight: bold;">${outageStatus.split(' - ')[0]}</span> <span style="font-size: 17px; font-weight: normal;">- ${outageStatus.split(' - ')[1]}</span>`;
+  banner.style.display = "block";
+
+
+  // Populate the default notice
+  const defaultBox = document.getElementById("defaultNotice");
+  defaultBox.innerHTML = `<strong>${defaultNotice.Timestamp}</strong> - ${defaultNotice.Notice}`;
+  
+  // Populate the updates
+  let updatesHTML = '';
+  updates.forEach(update => {
+    updatesHTML += `<div><strong>${update.Timestamp}</strong> - ${update.Notice}</div>`;
+  });
+  document.getElementById("updatesDiv").innerHTML = updatesHTML;
+  
+  // Style each update box
+  const updatesDiv = document.getElementById("updatesDiv");
+  updatesDiv.childNodes.forEach(node => {
+    if (node.nodeType === 1) { // Ensure it's an element node
+      node.style.borderRadius = '8px';
+      node.style.padding = '10px';
+      node.style.margin = '5px 0';
+      node.style.backgroundColor = '#f1f1f1';
+    }
+  });
+
+  // Click Event to toggle expanded outage info
+  function toggleUpdates() {
+    const expandedDiv = document.getElementById("expandedOutageInfo");
+    expandedDiv.style.display = (expandedDiv.style.display === 'none' || expandedDiv.style.display === '') ? 'block' : 'none';
+  }
+  // Click Event to toggle hidden sections
+  document.getElementById("outageAlertBanner").addEventListener("click", () => {
+    const hiddenSections = document.getElementById("hiddenSections");
+    hiddenSections.style.display = (hiddenSections.style.display === 'none' || hiddenSections.style.display === '') ? 'block' : 'none';
+  });
+  // Click Event to toggle expanded outage info
+  document.getElementById("clickToExpand").addEventListener("click", () => {
+    const expandedDiv = document.getElementById("expandedOutageInfo");
+    expandedDiv.style.display = (expandedDiv.style.display === 'none' || expandedDiv.style.display === '') ? 'block' : 'none';
+  });
+</script>
